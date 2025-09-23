@@ -1,66 +1,361 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f9f3;
-    color: #2d4a2e;
-    margin: 0;
-    padding: 0;
-}
-  
-header {
-    background-color: #6b8e23;
-    color: rgb(255, 3, 3);
-    padding: 1em;
-    text-align: center;
+  background: linear-gradient(135deg, #0b3d0b, #004d00, #001a00, #000000);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #a3c293;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0 20px 40px 20px;
+  min-height: 100vh;
 }
 
-nav a {
-    color: white;
-    margin: 0 1em;
-    text-decoration: none;
-    font-weight: bold;
+/* Para darle un ligero brillo y sombra al contenido principal */
+.container, .catalogo, nav, form {
+  background: rgba(0, 51, 0, 0.7);
+  border-radius: 12px;
+  padding: 20px 25px;
+  box-shadow: 0 8px 20px rgba(0, 77, 0, 0.6);
+  color: #d0f0c0;
+  margin-bottom: 30px;
 }
 
-main {
-    padding: 1em 2em;
+/* Ajuste de títulos */
+h1, h2, h3 {
+  color: #7ee07e;
+  text-shadow: 1px 1px 3px #003300;
+  font-weight: 700;
 }
 
-form {
-    background-color: #eaf2e3;
-    padding: 1em;
-    margin-top: 1em;
-    border-radius: 8px;
+/* Enlaces y botones */
+button, nav a {
+  background-color: #003300;
+  color: #a3f195;
+  border: 2px solid #00cc44;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-label {
-    display: block;
-    margin: 0.5em 0 0.2em 0;
+button:hover, nav a:hover {
+  background-color: #00cc44;
+  color: #002200;
+  border-color: #00cc44;
 }
 
+/* Inputs y textarea mejorados */
 input, textarea, select {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #a3b18a;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #004d00;
+  background-color: #001a00;
+  color: #a3f195;
+  font-weight: 600;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
 }
 
+input:focus, textarea:focus, select:focus {
+  border-color: #00cc44;
+  outline: none;
+  background-color: #002200;
+}
+
+/* Catalogo mejora */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px 40px;
+  margin-top: 1em;
+}
+
+.producto {
+  background: rgba(0, 77, 0, 0.6);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 204, 68, 0.7);
+}
+
+.producto img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.6em;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 51, 0, 0.6);
+}
+
+/* Texto producto */
+.producto h2 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #a3f195;
+  text-shadow: 0 0 4px #00cc44;
+}
+
+.producto p, .precio {
+  font-size: 14px;
+  color: #d0f0c0;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Botones producto */
+.producto button {
+  background-color: #002200;
+  color: #a3f195;
+  border: 2px solid #00cc44;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.producto button:hover {
+  background-color: #00cc44;
+  color: #002200;
+  border-color: #00cc44;
+}
+
+
+/* Botones generales */
 button {
-    margin-top: 1em;
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    padding: 0.7em 1.2em;
-    cursor: pointer;
-    border-radius: 4px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button:hover {
-    background-color: #556b2f;
+/* Paneles (carrito, contacto, pedido) */
+.panel {
+  background-color: #f8f9fa;
+  border-left: 4px solid #004d00;
+  box-shadow: -3px 0 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  position: relative;
 }
 
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #c9d6b8;
-    margin-top: 2em;
+/* Carrito items */
+.carrito-items div {
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.carrito-items button {
+  background-color: #b30000;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: white;
+  border: none;
+}
+
+.carrito-items button:hover {
+  background-color: #7a0000;
+}
+
+/* Total carrito */
+.carrito-total {
+  font-weight: 700;
+  margin-top: 15px;
+  text-align: center;
+  color: #004d00;
+}
+
+/* Botones en panel carrito */
+#carrito button:first-of-type {
+  background-color: #00cc44;
+  color: #003300;
+}
+
+#carrito button:first-of-type:hover {
+  background-color: #007a22;
+}
+
+#carrito button:last-of-type {
+  background-color: #ccc;
+}
+
+#carrito button:last-of-type:hover {
+  background-color: #bbb;
+}
+
+/* Botón cerrar panel */
+.cerrar {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #444;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  transition: color 0.3s ease;
+}
+
+.cerrar:hover {
+  color: #004d00;
+}
+
+/* FORMULARIOS CONTACTO Y PEDIDO */
+/* Contenedor del formulario */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Etiquetas */
+form label {
+  font-weight: 600;
+  color: #004d00;
+}
+
+/* Inputs y textarea */
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form textarea,
+form select {
+  padding: 8px 12px;
+  border: 2px solid #004d00;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #007300;
+  outline: none;
+}
+
+/* Botones en formulario */
+form button {
+  background-color: #004d00;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 150px;
+  align-self: center;
+}
+
+form button:hover {
+  background-color: #007300;
+}
+
+
+#carrito {
+  /* ❌ elimina display:none; */
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100%;
+  background: #f8f9fa;
+  border-left: 3px solid #28a745;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  padding: 10px;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: right 0.3s ease;
+}
+
+#carrito.active {
+  right: 0;
+}
+
+
+#carrito h3 {
+  text-align: center;
+  color: #28a745;
+}
+
+.carrito-items div {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.carrito-items button {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.carrito-total {
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  color: #28a745; 
+}
+
+#carrito button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#carrito button:first-of-type {
+  background-color: #00ff3c;
+  color: rgb(255, 0, 0);
+}
+
+#carrito button:first-of-type:hover {
+  background-color: #218838;
+}
+
+#carrito button:last-of-type {
+  background-color: #ccc;
+}
+
+#carrito button:last-of-type:hover {
+  background-color: #bbb;
+}
+/* Estilo para el botón activo en el menú */
+nav a.active,
+nav button.active {
+  background-color: #28a745;
+  color: white;
 }
