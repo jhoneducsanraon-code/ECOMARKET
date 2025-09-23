@@ -159,3 +159,4 @@ function finalizarCompra() {
   actualizarCarrito();
   cerrarPanel();
 }
+
